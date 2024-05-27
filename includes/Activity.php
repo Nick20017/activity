@@ -16,9 +16,9 @@ class Activity {
 
         switch($activityAmount) {
             case 0:
-                return null;
+                return [];
             case 1:
-                return $this->json[0];
+                return [$this->json[0]];
             default:
                 $selectedIndices = [];
                 $items = [];
