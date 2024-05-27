@@ -10,7 +10,7 @@ Third is an output type with only 2 values available (file and console).
 
 When all the inputs are completed, API request is sent with all the data provided. After response is returned, there is a check for any kind of errors and proper response type.
 In case of failure, an error message is displayed in console. Otherwise successful response is being processed.
-It's iterating through all the keys and all the key-value pairs are saved in a string variable. All items with empty key or value are skipped, ID same.
+It's iterating through all the results and their keys and all the key-value pairs are saved in a string variable. All items with empty key or value are skipped, ID same.
 
 # file
 

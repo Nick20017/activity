@@ -11,7 +11,7 @@ class Activity {
         $this->json = $json;
     }
 
-    public function getRandomActivity(): array|null {
+    public function getRandomActivities(): array|null {
         $activityAmount = count($this->json);
 
         switch($activityAmount) {
@@ -20,8 +20,18 @@ class Activity {
             case 1:
                 return $this->json[0];
             default:
-                $randomActivityIndex = rand(0, $activityAmount - 1);
-                return $this->json[$randomActivityIndex];
+                $selectedIndices = [];
+                $items = [];
+                while(count($selectedIndices) < min($activityAmount, 3)) {
+                    $randomActivityIndex = rand(0, $activityAmount - 1);
+                    if (in_array($randomActivityIndex, $selectedIndices)) continue;
+
+                    $items[] = $this->json[$randomActivityIndex];
+
+                    $selectedIndices[] = $randomActivityIndex;
+                }
+
+                return $items;
         }
     }
 }

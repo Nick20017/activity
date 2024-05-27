@@ -17,13 +17,17 @@ class OutputWriter {
         $keyRegex = '/([a-z])([A-Z])/';
 
         $data = '';
-        foreach($json as $key => $value) {
-            if (empty($key) || empty($value)) continue;
-            if ($key == 'key') continue;
+        foreach($json as $item) {
+            foreach($item as $key => $value) {
+                if (empty($key) || empty($value) && $value != 0) continue;
+                if ($key == 'key') continue;
+    
+                $key = preg_replace($keyRegex, '$1 $2', $key);
+                
+                $data .= ucfirst($key) . ": " . (str_contains($value, 'http') ? $value : (is_bool($value) ? ($value == true ? 'Yes' : 'No') : ucfirst($value))) . "\n";
+            }
 
-            $key = preg_replace($keyRegex, '$1 $2', $key);
-            
-            $data .= ucfirst($key) . ": " . (str_contains($value, 'http') ? $value : (is_bool($value) ? ($value == true ? 'Yes' : 'No') : ucfirst($value))) . "\n";
+            $data .= "\n";
         }
 
         switch($this->outputType) {

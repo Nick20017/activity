@@ -45,5 +45,5 @@ if ($json = $request->getJson()) {
     $activity = new Activity($json);
     
     $writer = new OutputWriter($outputTypeEnum);
-    $writer->write($activity->getRandomActivity());
+    $writer->write($activity->getRandomActivities());
 }
