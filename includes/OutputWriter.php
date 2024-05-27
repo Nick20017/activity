@@ -32,7 +32,7 @@ class OutputWriter {
 
         switch($this->outputType) {
             case OutputTypeEnum::console:
-                $data = "\n" . $data;
+                $data = "\n" . trim($data) . "\n";
                 echo($data);
 
                 break;
