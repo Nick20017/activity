@@ -51,7 +51,7 @@ class OutputWriter {
                         echo('Couldn\'t write output to file. Please try again or use console output instead.');
                     }
                 } else {
-                    echo('Couldn\'t open file. Please create one and try again.');
+                    echo('Couldn\'t open file "output/output.txt". Please create one and try again.');
                 }
 
                 fclose($file);
