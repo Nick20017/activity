@@ -14,12 +14,16 @@ class OutputWriter {
     }
 
     public function write(array $json) {
+        $keyRegex = '/([a-z])([A-Z])/';
+
         $data = '';
         foreach($json as $key => $value) {
             if (empty($key) || empty($value)) continue;
-            if ($key == 'kidFriendly' || $key == 'key') continue;
+            if ($key == 'key') continue;
+
+            $key = preg_replace($keyRegex, '$1 $2', $key);
             
-            $data .= ucfirst($key) . ": " . (str_contains($value, 'http') ? $value : ucfirst($value)) . "\n";
+            $data .= ucfirst($key) . ": " . (str_contains($value, 'http') ? $value : (is_bool($value) ? ($value == true ? 'Yes' : 'No') : ucfirst($value))) . "\n";
         }
 
         switch($this->outputType) {

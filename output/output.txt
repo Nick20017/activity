@@ -1,0 +1,8 @@
+Activity: Pull a harmless prank on one of your friends
+Availability: 0.2
+Type: Social
+Participants: 1
+Price: 0.1
+Accessibility: Few to no challenges
+Duration: Minutes
+Kid Friendly: Yes
